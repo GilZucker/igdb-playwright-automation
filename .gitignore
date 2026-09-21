@@ -1,0 +1,33 @@
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# Python cache & compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Playwright & Testing Artifacts
+test-results/
+playwright-report/
+blob-report/
+.playwright-artifacts/
+
+# Allure Reports & Results
+allure-results/
+allure-report/
+
+# IDE & Editor Settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment variables / Secrets
+.env
+
+# OS Generated Files
+.DS_Store
+Thumbs.db
