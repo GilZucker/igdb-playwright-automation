@@ -97,3 +97,17 @@ pytest --alluredir=allure-results
 allure serve allure-results
 ```
 
+## 🎬 Test Execution & Reporting
+
+### ⚡ Live E2E Execution Demo
+*Execution of Top 100 filter scenarios in headed browser mode:*
+
+![E2E Execution Demo](assets/filter_top_100_test.gif)
+
+---
+
+### 📊 Test Reporting (Allure)
+*Overview of full suite test results, suite statistics, and execution metrics:*
+
+![Allure Report Overview](assets/allure-report.png)
+
