@@ -15,20 +15,32 @@ def browser_type_launch_args(browser_type_launch_args):
         **browser_type_launch_args,
         "headless": False,
         "args": [
-            "--start-maximized",  # Opens window as full screen
+            # "--start-maximized",  # Opens window as full screen
+            "--window-size=1920,1080",
+            "--window-position=320,5",
             "--disable-search-engine-choice-screen",  # Filter Chrome popups the interrupts the automation
             "--disable-features=FindInPage",  # Blocks the Find tool that appear on the screen
         ],
     }
 
 
+# @pytest.fixture(scope="session")
+# def browser_context_args(browser_context_args):
+#     return {
+#         **browser_context_args,
+#         "no_viewport": True,  # Support for full screen view on ultrawide screen
+#     }
+#
+
 @pytest.fixture(scope="session")
 def browser_context_args(browser_context_args):
     return {
         **browser_context_args,
-        "no_viewport": True,  # Support for full screen view on ultrawide screen
+        "viewport": {
+            "width": 1920,
+            "height": 1080
+        }
     }
-
 
 # ==========================================
 # 2. API Setup & Authentication (IGDB)

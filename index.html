@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gil Zucker | QA Automation Engineer Portfolio</title>
+    
+    <!-- Bootstrap CSS & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <!-- AOS Animation Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        body { 
+            background-color: #0d1117; 
+            color: #f8fafc; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Mouse Cursor Glow Effect */
+        #cursor-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.14) 0%, rgba(56, 189, 248, 0.08) 40%, rgba(13, 17, 23, 0) 70%);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+        
+        /* Vibrant GitHub-style Hero Section with Tech Hexagon Overlay */
+        .hero { 
+            position: relative;
+            padding: 100px 0 80px 0; 
+            text-align: center; 
+            background: radial-gradient(circle at 50% 20%, rgba(147, 51, 234, 0.28) 0%, rgba(56, 189, 248, 0.15) 45%, rgba(13, 17, 23, 1) 85%);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Tech Hexagon Pattern Overlay */
+        .hero-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%23a855f7' fill-opacity='0.07'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34L25 30.6V17.9l-11.01-6.35L3 17.9zM0 15l12.98-7.5V0h2v7.5L28 15v18l-13 7.5v7.5h-2v-7.5L0 33V15z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        /* Profile Link Buttons */
+        .btn-profile {
+            min-width: 150px;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-github {
+            background-color: rgba(22, 27, 34, 0.8);
+            color: #f8fafc;
+            border: 1px solid #30363d;
+            backdrop-filter: blur(8px);
+        }
+        .btn-github:hover {
+            background-color: #30363d;
+            color: #ffffff;
+            border-color: #a855f7;
+            transform: translateY(-2px);
+        }
+
+        .btn-linkedin {
+            background-color: #0a66c2;
+            color: #ffffff;
+            border: 1px solid #0a66c2;
+        }
+        .btn-linkedin:hover {
+            background-color: #084e96;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(10, 102, 194, 0.4);
+        }
+
+        /* Primary Green CTA Button */
+        .btn-cta { 
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%); 
+            color: #ffffff; 
+            padding: 14px 40px; 
+            border-radius: 30px; 
+            font-weight: 700; 
+            font-size: 1.1rem;
+            text-decoration: none; 
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(16, 185, 129, 0.35);
+            border: none;
+            cursor: pointer;
+        }
+        .btn-cta:hover { 
+            color: #ffffff; 
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.5);
+        }
+
+        /* Tech Bar Grid Cards with Purple Glow Border */
+        .tech-card {
+            background: rgba(22, 27, 34, 0.8);
+            border: 1px solid rgba(168, 85, 247, 0.4);
+            border-radius: 12px;
+            padding: 18px 12px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(6px);
+            box-shadow: 0 0 12px rgba(168, 85, 247, 0.15);
+            text-align: center;
+        }
+        .tech-card:hover {
+            border-color: #a855f7;
+            transform: translateY(-4px);
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+        }
+        .tech-icon {
+            font-size: 2rem;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        /* Custom Cards */
+        .card-custom { 
+            background-color: #161b22; 
+            border: 1px solid #30363d; 
+            border-radius: 14px;
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .card-custom:hover {
+            transform: translateY(-4px);
+            border-color: #a855f7;
+        }
+
+        .section-title {
+            color: #38bdf8;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        /* About Me Section Styling */
+        .about-card {
+            background: rgba(22, 27, 34, 0.75);
+            border: 1px solid #30363d;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+        .profile-img-container {
+            position: relative;
+            max-width: 280px;
+            margin: 0 auto;
+        }
+        .profile-img {
+            border-radius: 16px;
+            border: 2px solid #a855f7;
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.25);
+        }
+        
+        /* Modal Custom Styling */
+        .modal-content {
+            background-color: #161b22;
+            border: 1px solid #a855f7;
+            border-radius: 16px;
+            color: #f8fafc;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mouse Glow Element -->
+    <div id="cursor-glow"></div>
+
+    <!-- Header / Hero Section -->
+    <section class="hero">
+        <div class="hero-pattern"></div>
+        <div class="container position-relative" style="z-index: 2;" data-aos="fade-down" data-aos-duration="1000">
+            <h1 class="display-3 fw-bold mb-2">Hi, I'm <span style="color: #38bdf8;">Gil Zucker</span></h1>
+            <p class="lead text-light mb-3 fs-3 fw-normal">Software QA & Automation Engineer</p>
+            <p class="text-light opacity-90 mx-auto mb-4 fs-6" style="max-width: 680px;">
+                Specializing in automated test frameworks, E2E web/API validation, Page Object Model architecture, and structured test reporting.
+            </p>
+            
+            <!-- Profile Links -->
+            <div class="d-flex justify-content-center align-items-center gap-3 mb-4">
+                <a href="https://github.com/gilzucker/igdb-playwright-automation" target="_blank" class="btn btn-profile btn-github">
+                    <i class="bi bi-github me-2"></i>GitHub
+                </a>
+                <a href="https://www.linkedin.com/in/gil-zucker-3aa09497/" target="_blank" class="btn btn-profile btn-linkedin">
+                    <i class="bi bi-linkedin me-2"></i>LinkedIn
+                </a>
+            </div>
+
+            <!-- Prominent CTA Button - Triggers Video Modal -->
+            <div>
+                <button type="button" class="btn btn-cta" data-bs-toggle="modal" data-bs-target="#videoModal">
+                    <i class="bi bi-play-circle-fill me-2"></i>Watch Execution Demo 
+                </button>
+            </div>
+        </div>
+    </section>
+
+<!-- About Me & Resume Section -->
+    <section id="about" class="py-5">
+        <div class="container" data-aos="fade-up">
+            <div class="about-card p-4 p-md-5">
+                <div class="row align-items-center g-4">
+                    <!-- Profile Picture Column -->
+                    <div class="col-lg-5 text-center">
+                        <div class="profile-img-container" style="max-width: 340px; margin: 0 auto;">
+                            <img src="./assets/profile_pic.jpg" alt="Gil Zucker" class="img-fluid profile-img w-100" style="border-radius: 16px; border: 2px solid #a855f7; box-shadow: 0 0 25px rgba(168, 85, 247, 0.25); object-fit: cover; aspect-ratio: 4/3;">
+                        </div>
+                    </div>
+
+                    <!-- Details Column -->
+                    <div class="col-lg-7">
+                        <span class="badge mb-2 px-3 py-2 rounded-pill" style="background-color: rgba(168, 85, 247, 0.2); color: #a855f7; border: 1px solid #a855f7;">
+                            <i class="bi bi-person-badge me-1"></i> About Me
+                        </span>
+                        <h2 class="text-white fw-bold mb-3">Gil Zucker</h2>
+                        
+                        <p class="text-light leading-relaxed mb-3">
+                            Experienced Software QA Engineer with a proven track record in manual testing, QA management, and automated test suite development. Passionate about software reliability, clean test architecture, and building robust E2E test coverage.
+                        </p>
+                        
+                  
+                        <!-- Key Personal Details List -->
+                        <div class="row g-3 text-light mb-4 small border-top border-bottom border-secondary py-3">
+                            <div class="col-sm-6">
+                                <span class="text-secondary fw-semibold">Role:</span> QA & Automation Engineer
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="text-secondary fw-semibold">Country:</span> Israel (Center District)
+                            </div>
+			    <div class="col-sm-6">
+                                <span class="text-secondary fw-semibold">Email:</span> <a href="mailto:gil.zucker.work@gmail.com" class="text-info text-decoration-none">gil.zucker.work@gmail.com</a>
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="text-secondary fw-semibold">Availability:</span> Immediate
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="text-secondary fw-semibold">Languages:</span> Hebrew (Native), English (High)
+                            </div>
+			    <div class="col-sm-6">
+                                <span class="text-secondary fw-semibold">Phone:</span> +(972)502702775
+                            </div>
+                            <div class="col-sm-6">
+                                <span class="text-secondary fw-semibold">Focus:</span> Web, API & Mobile Automation
+                            </div>
+                        </div>
+
+                        <!-- CV Download Button -->
+                        <div>
+                            <a href="./assets/Gil_Zucker_QA_Engineer.pdf" download class="btn btn-outline-info rounded-pill px-4 py-2 fw-bold">
+                                <i class="bi bi-download me-2"></i>Download Resume (CV)
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Project Section -->
+    <section id="project" class="py-5 border-top border-secondary">
+        <div class="container">
+            <h2 class="text-center section-title display-5" data-aos="fade-up">IGDB E2E Playwright Automation Framework</h2>
+
+            <!-- Overview & Demo video -->
+            <div class="row align-items-center mb-5 g-4">
+                <div class="col-lg-5" data-aos="fade-right" data-aos-duration="1000">
+                    <h3 class="h2 text-white mb-3">Project Overview</h3>
+                    <p class="text-light leading-relaxed">
+                        A comprehensive test automation framework built for the <strong>Internet Game Database (IGDB)</strong>.
+                    </p>
+                    <p class="text-secondary">
+                        The suite includes automated test cases covering critical UI flows (search, multi-criteria filtering, theme toggling) and backend API validations.
+                    </p>
+                </div>
+                <div class="col-lg-7" data-aos="fade-left" data-aos-duration="1000">
+                    <div class="card card-custom p-2 shadow-lg">
+                            <video autoplay loop muted playsinline class="img-fluid rounded w-100"
+                                    <source src="./assets/filter_top_100_by_platform_and_year.mp4" type="video/mp4">
+              			    Your browser does not support the video tag.
+                           </video>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Allure Reporting Section -->
+            <div class="row align-items-center g-4 mb-5">
+                <div class="col-lg-7 order-lg-1" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="card card-custom p-2 shadow-lg">
+                        <img src="./assets/allure-report.png" class="img-fluid rounded" alt="Allure Test Report">
+                    </div>
+                </div>
+                <div class="col-lg-5 order-lg-2" data-aos="fade-left" data-aos-duration="1000">
+                    <h3 class="h2 text-white mb-3">Analytics & Reporting</h3>
+                    <p class="text-light">
+                        Integrated with <strong>Allure Reporting Framework</strong> for detailed pass/fail analytics and visual test logs.
+                    </p>
+                    <p class="text-secondary">
+                        Generates interactive dashboards, test step breakdowns, pass/fail metrics, and embedded failure screenshots for rapid debugging.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section (Positioned at the Bottom) -->
+    <section id="technologies" class="py-5 border-top border-secondary">
+        <div class="container text-center" data-aos="fade-up">
+            <p class="text-uppercase tracking-wider fw-bold mb-4 small" style="letter-spacing: 2px; color: #a855f7 !important;">
+                <i class="bi bi-cpu me-2"></i> The Technologies In Use
+            </p>
+            <div class="row g-3 justify-content-center mx-auto" style="max-width: 900px;">
+                <div class="col-6 col-md-2">
+                    <div class="tech-card">
+                        <i class="bi bi-code-slash tech-icon" style="color: #38bdf8;"></i>
+                        <div class="fw-semibold small text-light">Python</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-2">
+                    <div class="tech-card">
+                        <i class="bi bi-gear-wide-connected tech-icon" style="color: #a855f7;"></i>
+                        <div class="fw-semibold small text-light">Playwright</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-2">
+                    <div class="tech-card">
+                        <i class="bi bi-check2-square tech-icon" style="color: #34d399;"></i>
+                        <div class="fw-semibold small text-light">Pytest</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-2">
+                    <div class="tech-card">
+                        <i class="bi bi-diagram-3-fill tech-icon" style="color: #c084fc;"></i>
+                        <div class="fw-semibold small text-light">POM Arch</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-2">
+                    <div class="tech-card">
+                        <i class="bi bi-bar-chart-line tech-icon" style="color: #fbbf24;"></i>
+                        <div class="fw-semibold small text-light">Allure</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-2">
+                    <div class="tech-card">
+                        <i class="bi bi-globe tech-icon" style="color: #38bdf8;"></i>
+                        <div class="fw-semibold small text-light">API & UI</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Modal Popup (Opens on Green CTA Click) -->
+    <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl">
+            <div class="modal-content">
+                <div class="modal-header border-secondary">
+                    <h5 class="modal-title text-white" id="videoModalLabel"><i class="bi bi-play-btn-fill text-success me-2"></i>Automation Execution Walkthrough</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="ratio ratio-16x9">
+                        <video controls id="demoVideo">
+                            <source src="./assets/execution-demo.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-4 border-top border-secondary mt-4">
+        <div class="container">
+            <p class="text-secondary mb-0">© 2026 Gil Zucker | Software QA & Automation Engineer</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap & AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ once: true, duration: 800 });
+
+        // Mouse Cursor Glow Tracking
+        const glow = document.getElementById('cursor-glow');
+        window.addEventListener('mousemove', (e) => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        });
+
+        // Pause video when modal is closed
+        const videoModal = document.getElementById('videoModal');
+        const demoVideo = document.getElementById('demoVideo');
+        // Play video when modal opens
+        videoModal.addEventListener('shown.bs.modal', function () {
+            demoVideo.currentTime = 0; // Starts from the beginning
+            demoVideo.play();
+        });
+
+        // Pause and reset video when modal is closed
+        videoModal.addEventListener('hidden.bs.modal', function () {
+            demoVideo.pause();
+        });
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
