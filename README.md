@@ -46,8 +46,7 @@
 │   ├── test_09_random_game_navigation.py
 │   ├── test_10_upcoming_releases.py
 │   ├── test_11_browser_history_cache.py
-│   ├── test_12_third_party_integration.py
-│   └── test_upcoming_releases.py
+│   └── test_12_third_party_integration.py
 ├── requirements.txt        # Project dependencies
 └── pytest.ini              # Pytest configuration & Allure settings
 
