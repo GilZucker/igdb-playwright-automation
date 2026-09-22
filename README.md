@@ -102,7 +102,7 @@ allure serve allure-results
 ### ⚡ Live E2E Execution Demo
 *Execution of Top 100 filter scenarios in headed browser mode:*
 
-![E2E Execution Demo](assets/filter_top_100_test.gif)
+![E2E Execution Demo](assets/filter_top_100_by_platform_and_year.gif)
 
 ---
 
